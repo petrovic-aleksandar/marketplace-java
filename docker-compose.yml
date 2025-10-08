@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: My01pass
+      POSTGRES_DB: marketplace
+    ports:
+      - 5432:5431
+  
+  wf:
+     build:
+       context: .
+       dockerfile: Dockerfile
+     ports:
+      - 8080:8080
+      - 9990:9990
