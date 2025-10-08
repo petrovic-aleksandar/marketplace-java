@@ -5,8 +5,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: My01pass
       POSTGRES_DB: marketplace
-    ports:
-      - 5432:5431
+    hostname: dbhost
   
   wf:
      build:
