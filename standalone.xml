@@ -136,9 +136,9 @@
                     <security user-name="sa" password="sa"/>
                 </datasource>
                 <datasource jndi-name="java:jboss/datasources/MarketplaceDS" pool-name="MarketplaceDS" enabled="true" use-java-context="true" statistics-enabled="${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}">
-                    <connection-url>jdbc:postgresql://database:5432/marketplace</connection-url>
-                    <driver>h2</driver>
-                    <security user-name="sa" password="sa"/>
+                    <connection-url>jdbc:postgresql://localhost:5432/marketplace</connection-url>
+                    <driver>postgres</driver>
+                    <security user-name="postgres" password="My01pass"/>
                 </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
