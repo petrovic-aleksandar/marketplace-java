@@ -1,0 +1,1 @@
+insert into appuser (id, username, password, name, email, phone, balance, role, active) values (1, 'admin', 'admin123', 'Marko Markovic', 'mm@gmail.com', '67 123 123', 0.0, 'ADMIN', true);

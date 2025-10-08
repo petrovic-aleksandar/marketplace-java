@@ -1,1 +1,0 @@
---insert into Item (id) values (1);

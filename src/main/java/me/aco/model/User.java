@@ -3,6 +3,8 @@ package me.aco.model;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -18,6 +20,7 @@ public class User {
 	private String email;
 	private String phone;
 	private double balance;
+	@Enumerated(EnumType.STRING)
 	private UserRole role;
 	private boolean active;
 	
