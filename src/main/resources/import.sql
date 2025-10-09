@@ -1,1 +1,4 @@
 insert into appuser (id, username, password, name, email, phone, balance, role, active) values (1, 'admin', 'admin123', 'Marko Markovic', 'mm@gmail.com', '67 123 123', 0.0, 'ADMIN', true);
+insert into appuser (id, username, password, name, email, phone, balance, role, active) values (2, 'petar.petrovic', 'petar123', 'Petar Petrovic', 'pp@gmail.com', '67 100 100', 1000.0, 'USER', true);
+insert into appuser (id, username, password, name, email, phone, balance, role, active) values (3, 'janko.jankovic', 'janko123', 'Janko Jankovic', 'jj@gmail.com', '67 111 222', 500.0, 'USER', true);
+SELECT setval('user_seq', 3)

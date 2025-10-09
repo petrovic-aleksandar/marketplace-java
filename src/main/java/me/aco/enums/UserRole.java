@@ -1,4 +1,4 @@
-package me.aco.model;
+package me.aco.enums;
 
 public enum UserRole {
 	
