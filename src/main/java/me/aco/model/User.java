@@ -6,11 +6,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "appuser")
+@NamedQueries(value = {
+		@NamedQuery(name = User.getAll, query = "select u from User u"),
+		@NamedQuery(name = User.getById, query = "select u from User u where u.id = :id"),
+		@NamedQuery(name = User.getByUsername, query = "select u from User u where u.username = :username")
+		})
 public class User {
+	
+	public static final String getAll = "GetAllUsers";
+	public static final String getById = "GetUserById";
+	public static final String getByUsername = "GetUserByUsername";
 	
 	@Id
 	private long id;
