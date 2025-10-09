@@ -14,7 +14,7 @@ public class UserService {
 	private EntityManager em;
 	
 	public void saveUser(User user) {
-		em.merge(user);
+		em.persist(user);
 	}
 	
 	public List<User> getAll() {

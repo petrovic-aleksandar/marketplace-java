@@ -6,6 +6,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
 import me.aco.Service.UserService;
 import me.aco.model.User;
 import me.aco.model.UserRole;
@@ -28,9 +30,9 @@ public class HelloWorldResource {
     
     @GET
     @Path("test")
-    public void test() {
+    public Response test() {
     	System.out.println("TEST");
-    	if (false) {
+    	if (true) {
     		User u = new User();
     		u.setUsername("petar.petrovic");
         	u.setPassword("petar123");
@@ -40,7 +42,6 @@ public class HelloWorldResource {
         	u.setRole(UserRole.USER);
         	userService.saveUser(u);
     	}
-    	
-    	
+    	return Response.ok("saved").build();
     }
 }
