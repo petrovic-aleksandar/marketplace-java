@@ -1,4 +1,4 @@
-package me.aco.Util;
+package me.aco.util;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

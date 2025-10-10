@@ -1,4 +1,4 @@
-package me.aco.Util;
+package me.aco.util;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.enterprise.inject.Produces;
