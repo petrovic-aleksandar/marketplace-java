@@ -1,7 +1,10 @@
 package me.aco.dto;
 
+import java.security.NoSuchAlgorithmException;
+
 import me.aco.enums.UserRole;
 import me.aco.model.User;
+import me.aco.util.SecurityUtil;
 
 public class UserReq {
 	
@@ -12,10 +15,10 @@ public class UserReq {
 	private String phone;
 	private String role;
 	
-	public User toUser() {
+	public User toUser() throws NoSuchAlgorithmException {
 		User user = new User();
 		user.setUsername(username);
-		user.setPassword(password);
+		user.setPassword(SecurityUtil.get_SHA_512_SecurePassword(password));
 		user.setName(name);
 		user.setEmail(email);
 		user.setPhone(phone);
