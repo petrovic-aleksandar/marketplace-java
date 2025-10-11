@@ -21,7 +21,7 @@ public class UserService {
 	}
 	
 	public boolean checkIfUsernameExists(String username) {
-		if (em.createNamedQuery(User.getByUsername, User.class).getResultList().size() > 0)
+		if (em.createNamedQuery(User.getByUsername, User.class).setParameter("username", username).getResultList().size() > 0)
 			return true;
 		else
 			return false;

@@ -17,7 +17,7 @@ import me.aco.dto.UserReq;
 import me.aco.dto.UserResp;
 import me.aco.service.UserService;
 
-@Path("user")
+@Path("User")
 public class UserEndpoint {
 	
 	@Inject

@@ -1,4 +1,4 @@
-insert into appuser (id, username, password, name, email, phone, balance, role, active) values (1, 'admin', 'admin123', 'Marko Markovic', 'mm@gmail.com', '67 123 123', 0.0, 'ADMIN', true);
-insert into appuser (id, username, password, name, email, phone, balance, role, active) values (2, 'petar.petrovic', 'petar123', 'Petar Petrovic', 'pp@gmail.com', '67 100 100', 1000.0, 'USER', true);
-insert into appuser (id, username, password, name, email, phone, balance, role, active) values (3, 'janko.jankovic', 'janko123', 'Janko Jankovic', 'jj@gmail.com', '67 111 222', 500.0, 'USER', true);
+insert into appuser (id, username, password, name, email, phone, balance, role, active) values (1, 'admin', 'a3197067443fe8bbf77b9b88a887b802edd2fbf9b99b1dad3b44ffb170000b18553915cd232bea8349b3a46b3048df0937b14d50762208e1d0004c591f1ddd9f', 'Marko Markovic', 'mm@gmail.com', '67 123 123', 0.0, 'Admin', true);
+insert into appuser (id, username, password, name, email, phone, balance, role, active) values (2, 'petar.petrovic', '9720dca8bb16c4da4268ecb63f363e56e317016f614e657f1651219ed458887c3ce094380b1defb8631d83feb2a4f71de99b09e618d66a2097e4e394a0a76d0d', 'Petar Petrovic', 'pp@gmail.com', '67 100 100', 1000.0, 'User', true);
+insert into appuser (id, username, password, name, email, phone, balance, role, active) values (3, 'janko.jankovic', '9ebb79ef5e53d024a4af206bffa6b274524f6531a15a9c1cb328cc0379786c114db5440a1f60ec0f8d6addb0ef9277698dd253f42a36ee6a9a1e21fce1f0addc', 'Janko Jankovic', 'jj@gmail.com', '67 111 222', 500.0, 'User', true);
 SELECT setval('user_seq', 3)
