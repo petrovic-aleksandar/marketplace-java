@@ -15,6 +15,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import me.aco.dto.UserReq;
 import me.aco.dto.UserResp;
+import me.aco.interfaces.JwtSecured;
 import me.aco.service.UserService;
 
 @Path("User")
@@ -31,6 +32,7 @@ public class UserEndpoint {
 		return response;
 	}
 	
+	@JwtSecured
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response create(UserReq request) {
