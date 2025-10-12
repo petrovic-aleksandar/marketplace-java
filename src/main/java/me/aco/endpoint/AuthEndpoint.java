@@ -7,6 +7,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 import me.aco.dto.LoginReq;
 import me.aco.dto.TokenResp;
+import me.aco.model.User;
 import me.aco.service.AuthService;
 import me.aco.service.UserService;
 import me.aco.util.JWTUtil;
@@ -23,11 +24,12 @@ public class AuthEndpoint {
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	public TokenResp login(LoginReq req) {
-		if (!userService.checkIfUsernameExists(req.getUsername()))
+		User loadedUser = userService.getByUsername(req.getUsername());
+		if (loadedUser == null)
 			return null;
-		if (!authService.checkPassword(req))
+		else if (!authService.checkPassword(req, loadedUser))
 			return null;
-		return new TokenResp(JWTUtil.createToken(), authService.createAndSaveRefreshToken(req));
+		return new TokenResp(JWTUtil.createToken(loadedUser), authService.createAndSaveRefreshToken(req));
 	}
 
 }

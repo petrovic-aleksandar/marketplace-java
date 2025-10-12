@@ -19,11 +19,12 @@ public class UserService {
 		return em.createNamedQuery(User.getAll, User.class).getResultList();
 	}
 	
-	public boolean checkIfUsernameExists(String username) {
-		if (em.createNamedQuery(User.getByUsername, User.class).setParameter("username", username).getResultList().size() > 0)
-			return true;
+	public User getByUsername(String username) {
+		List<User> users = em.createNamedQuery(User.getByUsername, User.class).setParameter("username", username).getResultList();
+		if (users.size() > 0)
+			return users.get(0);
 		else
-			return false;
+			return null;
 	}
 	
 	public void persistUser(User user) {
