@@ -45,7 +45,6 @@ public class UserEndpoint {
 			e.printStackTrace();
 			return Response.status(500, e.getMessage()).build();
 		}
-		
 	}
 	
 	@PUT
