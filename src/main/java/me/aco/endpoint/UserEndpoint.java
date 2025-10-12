@@ -18,6 +18,7 @@ import me.aco.dto.UserResp;
 import me.aco.interfaces.JwtSecured;
 import me.aco.service.UserService;
 
+@JwtSecured
 @Path("User")
 public class UserEndpoint {
 	
@@ -32,11 +33,10 @@ public class UserEndpoint {
 		return response;
 	}
 	
-	@JwtSecured
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response create(UserReq request) {
-		if (userService.checkIfUsernameExists(request.getUsername()))
+		if (userService.getByUsername(request.getUsername()) != null)
 			return Response.status(409, "Username already taken!").build();
 		try {
 			userService.saveUser(request.toUser());
