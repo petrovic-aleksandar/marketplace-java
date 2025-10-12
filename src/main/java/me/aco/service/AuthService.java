@@ -1,6 +1,5 @@
 package me.aco.service;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 
@@ -21,7 +20,7 @@ public class AuthService {
 	
 	public boolean checkPassword(LoginReq req) {
 		User loadedUser = em.createNamedQuery(User.getByUsername, User.class).setParameter("username", req.getUsername()).getResultList().get(0);
-		if (loadedUser.getPassword().equals(SecurityUtil.get_SHA_512_SecurePassword(req.getPassword())))
+		if (loadedUser.getPassword().equals(SecurityUtil.get_SHA_512_SecurePassword(req.getPassword(), loadedUser.getSalt())))
 			return true;
 		else
 			return false;		

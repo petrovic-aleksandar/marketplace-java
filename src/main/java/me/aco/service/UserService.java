@@ -5,7 +5,6 @@ import java.util.List;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
 import me.aco.dto.UserReq;
 import me.aco.enums.UserRole;
 import me.aco.model.User;

@@ -6,11 +6,11 @@ import java.security.SecureRandom;
 
 public class SecurityUtil {
 
-	public static String get_SHA_512_SecurePassword(String passwordToHash) {
+	public static String get_SHA_512_SecurePassword(String passwordToHash, String salt) {
 		String generatedPassword = null;
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
-			md.update(getSalt().getBytes());
+			md.update(salt.getBytes());
 			byte[] bytes = md.digest(passwordToHash.getBytes());
 			StringBuilder sb = new StringBuilder();
 			for (int i = 0; i < bytes.length; i++) {

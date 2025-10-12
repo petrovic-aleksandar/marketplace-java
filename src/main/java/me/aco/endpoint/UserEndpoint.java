@@ -64,7 +64,7 @@ public class UserEndpoint {
 	}
 	
 	@PUT
-	@Path("delete/{id}")
+	@Path("/delete/{id}")
 	public Response delete(long id) {
 		try {
 			userService.deactivateUser(id);

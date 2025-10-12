@@ -11,7 +11,7 @@ import me.aco.service.AuthService;
 import me.aco.service.UserService;
 import me.aco.util.JWTUtil;
 
-@Path("auth")
+@Path("Auth")
 public class AuthEndpoint {
 	
 	@Inject
@@ -19,6 +19,7 @@ public class AuthEndpoint {
 	@Inject
 	private AuthService authService;
 	
+	@Path("/login")
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
 	public TokenResp login(LoginReq req) {
