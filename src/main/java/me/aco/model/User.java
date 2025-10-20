@@ -18,7 +18,7 @@ import me.aco.enums.UserRole;
 @Entity
 @Table(name = "appuser")
 @NamedQueries(value = {
-		@NamedQuery(name = User.getAll, query = "select u from User u"),
+		@NamedQuery(name = User.getAll, query = "select u from User u order by u.id desc"),
 		@NamedQuery(name = User.getById, query = "select u from User u where u.id = :id"),
 		@NamedQuery(name = User.getByUsername, query = "select u from User u where u.username = :username")
 		})
