@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import me.aco.dto.LoginReq;
 import me.aco.dto.TokenResp;
-import me.aco.dto.UserReq;
+import me.aco.dto.UserRegReq;
 import me.aco.model.User;
 import me.aco.service.AuthService;
 import me.aco.service.UserService;
@@ -37,7 +37,7 @@ public class AuthEndpoint {
 	@Path("/register")
 	@POST
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response register(UserReq req) {
+	public Response register(UserRegReq req) {
 		if (userService.getByUsername(req.getUsername()) != null)
 			return Response.status(409, "Username already taken!").build();
 		try {

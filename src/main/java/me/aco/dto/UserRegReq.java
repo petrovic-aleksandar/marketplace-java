@@ -6,15 +6,14 @@ import me.aco.enums.UserRole;
 import me.aco.model.User;
 import me.aco.util.SecurityUtil;
 
-public class UserReq {
-	
+public class UserRegReq {
+
 	private String username;
 	private String password;
 	private String name;
 	private String email;
 	private String phone;
-	private String role;
-	
+
 	public User toUser() throws NoSuchAlgorithmException {
 		User user = new User();
 		user.setUsername(username);
@@ -23,17 +22,19 @@ public class UserReq {
 		user.setName(name);
 		user.setEmail(email);
 		user.setPhone(phone);
-		user.setRole(UserRole.valueOf(role));
+		user.setRole(UserRole.User);
 		user.setActive(true);
 		return user;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -45,26 +46,25 @@ public class UserReq {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getPhone() {
 		return phone;
 	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
 	}
 
 }

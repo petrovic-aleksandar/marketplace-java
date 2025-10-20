@@ -10,12 +10,14 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import me.aco.dto.UserReq;
 import me.aco.dto.UserResp;
 import me.aco.interfaces.JwtSecured;
+import me.aco.model.User;
 import me.aco.service.UserService;
 
 @JwtSecured
@@ -39,8 +41,8 @@ public class UserEndpoint {
 		if (userService.getByUsername(request.getUsername()) != null)
 			return Response.status(409, "Username already taken!").build();
 		try {
-			userService.saveUser(request.toUser());
-			return Response.ok("User created!").build();
+			User createdUser = userService.saveUser(request.toUser());
+			return Response.ok(createdUser).build();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return Response.status(500, e.getMessage()).build();
@@ -50,10 +52,10 @@ public class UserEndpoint {
 	@PUT
 	@Path("{id}")
 	@Consumes({MediaType.APPLICATION_JSON})
-	public Response update(long id, UserReq request) {
+	public Response update(@PathParam("id") long id, UserReq request) {
 		try {
-			userService.updateUser(id, request);
-			return Response.ok().build();
+			User updatedUser = userService.updateUser(id, request);
+			return Response.ok(updatedUser).build();
 		} catch (NoResultException nre) {
 			return Response.status(400, "User with given Id not found!").build();
 		} catch (Exception e) {
@@ -63,11 +65,25 @@ public class UserEndpoint {
 	}
 	
 	@PUT
-	@Path("/delete/{id}")
-	public Response delete(long id) {
+	@Path("/deactivate/{id}")
+	public Response deactivate(@PathParam("id") long id) {
 		try {
-			userService.deactivateUser(id);
-			return Response.ok().build();
+			User user = userService.deactivateUser(id);
+			return Response.ok(user).build();
+		} catch (NoResultException nre) {
+			return Response.status(400, "User with given Id not found!").build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return Response.status(500, e.getMessage()).build();
+		}
+	}
+	
+	@PUT
+	@Path("/activate/{id}")
+	public Response activate(@PathParam("id") long id) {
+		try {
+			User user = userService.activateUser(id);
+			return Response.ok(user).build();
 		} catch (NoResultException nre) {
 			return Response.status(400, "User with given Id not found!").build();
 		} catch (Exception e) {

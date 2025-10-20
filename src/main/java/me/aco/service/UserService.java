@@ -19,6 +19,14 @@ public class UserService {
 		return em.createNamedQuery(User.getAll, User.class).getResultList();
 	}
 	
+	public User getById(long id) {
+		List<User> users = em.createNamedQuery(User.getById, User.class).setParameter("id", id).getResultList();
+		if (users.size() > 0)
+			return users.get(0);
+		else
+			return null;
+	}
+	
 	public User getByUsername(String username) {
 		List<User> users = em.createNamedQuery(User.getByUsername, User.class).setParameter("username", username).getResultList();
 		if (users.size() > 0)
@@ -35,19 +43,26 @@ public class UserService {
 		return em.merge(user);
 	}
 	
-	public void updateUser(long id, UserReq request) {
+	public User updateUser(long id, UserReq request) {
 		User loadedUser = em.createNamedQuery(User.getById, User.class).setParameter("id", id).getSingleResult();
 		loadedUser.setUsername(request.getUsername());
 		loadedUser.setName(request.getName());
 		loadedUser.setEmail(request.getEmail());
 		loadedUser.setPhone(request.getPhone());
 		loadedUser.setRole(UserRole.valueOf(request.getRole()));
+		return saveUser(loadedUser);
 	}
 	
-	public void deactivateUser(long id) {
+	public User deactivateUser(long id) {
 		User loadedUser = em.createNamedQuery(User.getById, User.class).setParameter("id", id).getSingleResult();
 		loadedUser.setActive(false);
-		em.merge(loadedUser);
+		return saveUser(loadedUser);
+	}
+	
+	public User activateUser(long id) {
+		User loadedUser = em.createNamedQuery(User.getById, User.class).setParameter("id", id).getSingleResult();
+		loadedUser.setActive(true);
+		return saveUser(loadedUser);
 	}
 
 }
