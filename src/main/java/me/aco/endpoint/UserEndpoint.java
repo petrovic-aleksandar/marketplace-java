@@ -16,6 +16,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import me.aco.dto.UserReq;
 import me.aco.dto.UserResp;
+import me.aco.enums.UserRole;
 import me.aco.interfaces.JwtSecured;
 import me.aco.model.User;
 import me.aco.service.UserService;
@@ -91,5 +92,16 @@ public class UserEndpoint {
 			return Response.status(500, e.getMessage()).build();
 		}
 	}
-
+	
+	@GET
+	@Path("/roles")
+	@Produces({MediaType.APPLICATION_JSON})
+	public List<String> getRoles() 
+	{
+		List<String> result = new ArrayList<>();
+		UserRole[] roles =UserRole.values();
+		for (UserRole userRole : roles)
+			result.add(userRole.toString());
+		return result;
+	}
 }
