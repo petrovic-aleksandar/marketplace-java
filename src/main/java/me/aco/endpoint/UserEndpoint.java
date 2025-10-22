@@ -55,7 +55,7 @@ public class UserEndpoint {
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response update(@PathParam("id") long id, UserReq request) {
 		User sameUsername = userService.getByUsername(request.getUsername());
-		if (sameUsername != null && sameUsername.getId() == id)
+		if (sameUsername != null && sameUsername.getId() != id)
 			return Response.status(409, "Username already taken!").build();
 		try {
 			User updatedUser = userService.updateUser(id, request);

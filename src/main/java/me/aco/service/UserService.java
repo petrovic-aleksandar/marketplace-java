@@ -1,5 +1,6 @@
 package me.aco.service;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import jakarta.ejb.Stateless;
@@ -8,6 +9,7 @@ import jakarta.persistence.EntityManager;
 import me.aco.dto.UserReq;
 import me.aco.enums.UserRole;
 import me.aco.model.User;
+import me.aco.util.SecurityUtil;
 
 @Stateless
 public class UserService {
@@ -43,9 +45,13 @@ public class UserService {
 		return em.merge(user);
 	}
 	
-	public User updateUser(long id, UserReq request) {
+	public User updateUser(long id, UserReq request) throws NoSuchAlgorithmException {
 		User loadedUser = em.createNamedQuery(User.getById, User.class).setParameter("id", id).getSingleResult();
 		loadedUser.setUsername(request.getUsername());
+		if (request.isUpdatePassword()) {
+			loadedUser.setSalt(SecurityUtil.getSalt());
+			loadedUser.setPassword(SecurityUtil.get_SHA_512_SecurePassword(request.getPassword(), loadedUser.getSalt()));
+		}
 		loadedUser.setName(request.getName());
 		loadedUser.setEmail(request.getEmail());
 		loadedUser.setPhone(request.getPhone());

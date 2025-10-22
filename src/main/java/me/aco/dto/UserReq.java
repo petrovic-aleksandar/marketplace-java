@@ -9,6 +9,7 @@ import me.aco.util.SecurityUtil;
 public class UserReq {
 	
 	private String username;
+	private boolean updatePassword;
 	private String password;
 	private String name;
 	private String email;
@@ -34,14 +35,18 @@ public class UserReq {
 	public void setUsername(String username) {
 		this.username = username;
 	}
+	public boolean isUpdatePassword() {
+		return updatePassword;
+	}
+	public void setUpdatePassword(boolean updatePassword) {
+		this.updatePassword = updatePassword;
+	}
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 	public String getName() {
 		return name;
 	}
