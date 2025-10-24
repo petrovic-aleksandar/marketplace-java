@@ -2,6 +2,7 @@ package me.aco.dto;
 
 import java.time.format.DateTimeFormatter;
 
+import me.aco.model.Image;
 import me.aco.model.Item;
 import me.aco.model.ItemType;
 
@@ -16,6 +17,7 @@ public class ItemResp {
 	private boolean deleted;
 	private String createdAt;
 	private UserResp seller;
+	private Image frontImage;
 	
 	public ItemResp(Item item) {
 		super();
@@ -82,6 +84,12 @@ public class ItemResp {
 	}
 	public void setSeller(UserResp seller) {
 		this.seller = seller;
+	}
+	public Image getFrontImage() {
+		return frontImage;
+	}
+	public void setFrontImage(Image frontImage) {
+		this.frontImage = frontImage;
 	}
 
 }

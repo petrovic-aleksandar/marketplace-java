@@ -1,7 +1,9 @@
 package me.aco.endpoint;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -16,9 +18,11 @@ import jakarta.ws.rs.core.Response;
 import me.aco.dto.ItemReq;
 import me.aco.dto.ItemResp;
 import me.aco.interfaces.JwtSecured;
+import me.aco.model.Image;
 import me.aco.model.Item;
 import me.aco.model.ItemType;
 import me.aco.model.User;
+import me.aco.service.ImageService;
 import me.aco.service.ItemService;
 import me.aco.service.UserService;
 
@@ -29,6 +33,8 @@ public class ItemsEndpoint {
 	private ItemService itemService;
 	@Inject
 	private UserService userService;
+	@Inject
+	private ImageService imageService;
 	
 	@JwtSecured
 	@Path("/{id}")
@@ -49,7 +55,6 @@ public class ItemsEndpoint {
 		return result;
 	}
 	
-	@JwtSecured
 	@Path("/byTypeId/{typeId}")
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
@@ -58,6 +63,9 @@ public class ItemsEndpoint {
 		List<Item> items = itemService.getByType(type);
 		List<ItemResp> result = new ArrayList<ItemResp>();
 		items.forEach(item -> result.add(new ItemResp(item)));
+		Map<Long, Image> map = new HashMap<>();
+		items.forEach(item -> map.put(Long.valueOf(item.getId()), imageService.getFrontImageForItem(item)));
+		result.forEach(x -> x.setFrontImage(map.get(x.getId())));
 		return result;
 	}
 	

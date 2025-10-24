@@ -15,6 +15,19 @@ insert into itemtype (id, name, description, imagePath) values (9, 'Services', '
 insert into itemtype (id, name, description, imagePath) values (10, 'Other', 'Whatever else.', 'Categories/10.jpg');
 select setval('item_type_seq', 10);
 
-insert into item (id, name, description, price, type_id, active, deleted, createdAt, seller_id) values (1, 'olovka', 'obicna  olovka', 1.1, 1, true, false, '2025-10-19 17:43:38.8328', 1);
-insert into item (id, name, description, price, type_id, active, deleted, createdAt, seller_id) values (2, 'olovka', 'hemijska  olovka', 1.1, 1, true, false, '2025-10-19 17:43:38.8328', 2);
-select setval ('item_seq', 2);
+insert into item (id, name, description, price, type_id, active, deleted, createdAt, seller_id) values (1, 'Audi A4', 'Red color, 2021., 35 TFSI', 30000, 1, true, false, '2025-10-19 17:43:38.8328', 2);
+insert into item (id, name, description, price, type_id, active, deleted, createdAt, seller_id) values (2, 'Audi A5', 'Pure luxury, 2021., 40 TFSI', 40000, 1, true, false, '2025-10-19 17:43:38.8328', 2);
+insert into item (id, name, description, price, type_id, active, deleted, createdAt, seller_id) values (3, 'Audi Q5', 'SUV version of classic Audi, 2021., 45 TDI', 65000, 1, true, false, '2025-10-19 17:43:38.8328', 2);
+insert into item (id, name, description, price, type_id, active, deleted, createdAt, seller_id) values (4, 'Audi TT', 'Old school 2016., 3.0 engine', 15000, 1, true, false, '2025-10-19 17:43:38.8328', 2);
+insert into item (id, name, description, price, type_id, active, deleted, createdAt, seller_id) values (5, 'Lotus elise', 'Cult classic from 2014., 4.0 gasoline', 60000, 1, true, false, '2025-10-19 17:43:38.8328', 2);
+select setval ('item_seq', 5);
+
+insert into image (id, path, item_id, front) values (1, 'audi_a4.jpg', 1, true);
+insert into image (id, path, item_id, front) values (2, 'audi_a4_2.jpg', 1, false);
+insert into image (id, path, item_id, front) values (3, 'audi_a4_3.jpg', 1, false);
+insert into image (id, path, item_id, front) values (4, 'audi_a5.jpg', 2, true);
+insert into image (id, path, item_id, front) values (5, 'audi_q5.jpg', 3, true);
+insert into image (id, path, item_id, front) values (6, 'audi_tt.jpg', 4, true);
+insert into image (id, path, item_id, front) values (7, 'lotuselise.jpg', 5, true);
+select setval ('image_seq', 7);
+
