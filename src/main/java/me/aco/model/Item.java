@@ -17,7 +17,7 @@ import jakarta.persistence.SequenceGenerator;
 @Entity
 @NamedQueries({ @NamedQuery(name = Item.getBySellerId, query = "select i from Item i where i.deleted = false and i.seller.id = :userId order by i.id desc"),
 		@NamedQuery(name = Item.getById, query = "select i from Item i where i.deleted = false and i.id = :id"),
-		@NamedQuery(name = Item.getByType, query = "select i from Item i where i.deleted = false and i.type = :type order by i.id desc")})
+		@NamedQuery(name = Item.getByType, query = "select i from Item i where i.deleted = false and i.type = :type and i.active = true order by i.id desc")})
 public class Item {
 
 	public static final String getBySellerId = "getItemsBySellerId";
