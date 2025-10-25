@@ -9,7 +9,6 @@ import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import me.aco.dto.LoginReq;
-import me.aco.dto.UserReq;
 import me.aco.model.User;
 import me.aco.util.SecurityUtil;
 

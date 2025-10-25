@@ -29,6 +29,14 @@ public class UserEndpoint {
 	private UserService userService;
 	
 	@GET
+	@Path("{id}")
+	@Produces({MediaType.APPLICATION_JSON})
+	public Response getById(@PathParam("id") long id) {
+		User user = userService.getById(id);
+		return user == null ? Response.status(404).build() : Response.ok(new UserResp(user)).build();
+	}
+	
+	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public List<UserResp> getAll() {
 		List<UserResp> response = new ArrayList<UserResp>();
