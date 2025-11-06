@@ -43,7 +43,7 @@ public class TransferService {
 	public Transfer addWithdrawal(TransferReq req, User user) {
 		Transfer t = new Transfer();
 		t.setAmount(req.getAmount());
-		t.setType(TransferType.Witdrawal);
+		t.setType(TransferType.Withdrawal);
 		t.setCreatedAt(LocalDateTime.now());
 		user.setBalance(user.getBalance() - req.getAmount());
 		user = em.merge(user);

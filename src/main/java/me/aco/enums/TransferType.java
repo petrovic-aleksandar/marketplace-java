@@ -4,6 +4,6 @@ public enum TransferType {
 	
 	Payment,
 	Purchase,
-	Witdrawal
+	Withdrawal
 
 }
